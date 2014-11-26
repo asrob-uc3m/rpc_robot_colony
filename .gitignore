@@ -1,6 +1,7 @@
 # General files
 .cproject
 .project
+build/*
 
 # Compiled Object files
 *.slo
