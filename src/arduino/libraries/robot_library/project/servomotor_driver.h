@@ -13,9 +13,15 @@
  * @copyright   Asociacion de Robotica, University Carlos III of Madrid
  */
 
-#include <motor_interface.h>
-#include <Arduino.h>
-#include <Servo.h>
+#include "Arduino.h"
+#include "Servo.h"
+#include <S
+
+#include "motor_interface.h"
+
+#define MAX_VELOCITY    180
+#define BASE_VELOCITY   90
+#define MIN_VELOCITY    0
 
 class ServomotorDriver : public MotorInterface
 {
@@ -23,7 +29,7 @@ class ServomotorDriver : public MotorInterface
         /**
          * @brief Constructor.
          */
-        ServomotorDriver();
+        ServomotorDriver(int pwm_pin);
 
         /**
          * @brief Destructor.
@@ -31,28 +37,15 @@ class ServomotorDriver : public MotorInterface
         ~ServomotorDriver();
 
         /**
-         * @brief get_direction
+         * @brief move
+         * @param direction Value 0 or 1.
+         * @param velocity Value between 0 and 100.
          * @return
          */
-        int get_direction();
+        void move(int direction, int velocity);
 
-        /**
-         * @brief set_direction
-         * @param direction
-         */
-        void set_direction(int direction);
-
-        /**
-         * @brief get_velocity
-         * @return
-         */
-        int get_velocity();
-
-        /**
-         * @brief set_velocity
-         * @param velocity
-         */
-        void set_velocity(int velocity);
+    private:
+        Servo _servo;
 };
 
 #endif

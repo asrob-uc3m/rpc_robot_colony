@@ -2,6 +2,7 @@
 .cproject
 .project
 build/
+CMakeLists.txt.user
 
 # Compiled Object files
 *.slo

@@ -27,33 +27,13 @@ class MotorInterface
         virtual ~MotorInterface();
 
         /**
-         * @brief get_direction
+         * @brief move
+         * @param direction Value 0 or 1.
+         * @param velocity Value between 0 and 100.
          * @return
          */
-        virtual int get_direction() = 0;
-
-        /**
-         * @brief set_direction
-         * @param direction
-         */
-        virtual void set_direction(int direction) = 0;
-
-        /**
-         * @brief get_velocity
-         * @return
-         */
-        virtual int get_velocity() = 0;
-
-        /**
-         * @brief set_velocity
-         * @param velocity
-         */
-        virtual void set_velocity(int velocity) = 0;
-
-    private:
-        int _pwm_pin;
-        int _direction;
-        int _velocity;
+        virtual void move(int direction, int velocity) {
+        }
 };
 
 #endif
