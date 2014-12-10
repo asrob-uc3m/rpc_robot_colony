@@ -1,9 +1,9 @@
-#ifndef SERVOMOTOR_DRIVER_H
-#define SERVOMOTOR_DRIVER_H
+#ifndef MOTOR_DRIVER_H
+#define MOTOR_DRIVER_H
 
 /**
- * @file        servomotor_driver.h
- * @brief       The Servomotor Driver class
+ * @file        motor_driver.h
+ * @brief       The Motor Driver class
  *
  * @author      Raul Perula-Martinez <raul.perula@uc3m.es>
  * @date        2014-11
@@ -14,26 +14,23 @@
  */
 
 #include "Arduino.h"
-#include "../../../../libraries/Servo/Servo.h"
-
 #include "motor_interface.h"
 
-#define MAX_VELOCITY    180
-#define BASE_VELOCITY   90
+#define MAX_VELOCITY    255
 #define MIN_VELOCITY    0
 
-class ServomotorDriver : public MotorInterface
+class MotorDriver : public MotorInterface
 {
     public:
         /**
          * @brief Constructor.
          */
-        ServomotorDriver(int pwm_pin);
+        MotorDriver(int pwm_pin, int dir_pin);
 
         /**
          * @brief Destructor.
          */
-        ~ServomotorDriver();
+        ~MotorDriver();
 
         /**
          * @brief move
@@ -44,7 +41,8 @@ class ServomotorDriver : public MotorInterface
         void move(int direction, int velocity);
 
     private:
-        Servo _servo;
+        int _pwm_pin;
+        int _dir_pin;
 };
 
 #endif
