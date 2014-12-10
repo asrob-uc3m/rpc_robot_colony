@@ -3,7 +3,7 @@ set(ARDUINO_DEFAULT_BOARD uno) # Default Board ID, when not specified
 set(ARDUINO_DEFAULT_PORT /dev/ttyACM0) # Default Port, when not specified
 
 #====================================================================#
-# Advanced static library exmaple
+# static library
 #====================================================================#
 generate_arduino_library(
     motor_interface_lib
@@ -13,7 +13,7 @@ generate_arduino_library(
 )
 
 #====================================================================#
-# Advanced firwmare example
+# firwmare
 #====================================================================#
 generate_arduino_firmware(
     robot_library
@@ -21,3 +21,5 @@ generate_arduino_firmware(
     LIBS motor_interface_lib
     BOARD uno
 )
+
+add_subdirectory(test)
