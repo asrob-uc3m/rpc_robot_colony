@@ -19,12 +19,12 @@ class MotorInterface
         /**
          * @brief Constructor.
          */
-        MotorInterface();
+        MotorInterface() {}
 
         /**
          * @brief Destructor.
          */
-        virtual ~MotorInterface();
+        virtual ~MotorInterface() {}
 
         /**
          * @brief move

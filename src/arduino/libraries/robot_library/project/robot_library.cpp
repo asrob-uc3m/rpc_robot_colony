@@ -10,11 +10,10 @@
  * @copyright   Asociacion de Robotica, University Carlos III of Madrid
  */
 
-#include "servomotor_driver.h"
+#include "Arduino.h"
 
 void setup()
 {
-
 }
 
 void loop()

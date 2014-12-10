@@ -14,13 +14,9 @@
  */
 
 #include "Arduino.h"
-#include "../../../../libraries/Servo/Servo.h"
+#include "Servo/Servo.h"
 
 #include "motor_interface.h"
-
-#define MAX_VELOCITY    180
-#define BASE_VELOCITY   90
-#define MIN_VELOCITY    0
 
 class ServomotorDriver : public MotorInterface
 {
@@ -45,6 +41,10 @@ class ServomotorDriver : public MotorInterface
 
     private:
         Servo _servo;
+
+        static const int MAX_VELOCITY = 255;
+        static const int BASE_VELOCITY = 90;
+        static const int MIN_VELOCITY = 0;
 };
 
 #endif

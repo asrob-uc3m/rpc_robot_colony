@@ -16,9 +16,6 @@
 #include "Arduino.h"
 #include "motor_interface.h"
 
-#define MAX_VELOCITY    255
-#define MIN_VELOCITY    0
-
 class MotorDriver : public MotorInterface
 {
     public:
@@ -43,6 +40,9 @@ class MotorDriver : public MotorInterface
     private:
         int _pwm_pin;
         int _dir_pin;
+
+        static const int MAX_VELOCITY = 255;
+        static const int MIN_VELOCITY = 0;
 };
 
 #endif
