@@ -6,7 +6,7 @@
  * @brief       The Servomotor Driver class
  *
  * @author      Raul Perula-Martinez <raul.perula@uc3m.es>
- * @date        2014-11
+ * @date        2014-12
  *
  * @version     1.0.0
  * @license     GPLv3
@@ -42,7 +42,7 @@ class ServomotorDriver : public MotorInterface
     private:
         Servo _servo;
 
-        static const int MAX_VELOCITY = 255;
+        static const int MAX_VELOCITY = 180;
         static const int BASE_VELOCITY = 90;
         static const int MIN_VELOCITY = 0;
 };

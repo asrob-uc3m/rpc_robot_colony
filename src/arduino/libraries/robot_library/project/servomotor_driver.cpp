@@ -1,3 +1,15 @@
+/**
+ * @file        servomotor_driver.cpp
+ * @brief       The Servomotor Driver class
+ *
+ * @author      Raul Perula-Martinez <raul.perula@uc3m.es>
+ * @date        2014-12
+ *
+ * @version     1.0.0
+ * @license     GPLv3
+ * @copyright   Asociacion de Robotica, University Carlos III of Madrid
+ */
+
 #include "servomotor_driver.h"
 
 //////////////////////////////////////////////////
@@ -19,16 +31,18 @@ ServomotorDriver::~ServomotorDriver()
 void ServomotorDriver::move(int direction, int velocity)
 {
     int total_vel = 0;
+    int min_scale = 0;
+    int max_scale = 100;
 
     //TODO: change direction to an enum
     switch (direction) {
         case 0:
             // convert velocity (0-100 to 90-0)
-            total_vel = ((100 - velocity) * BASE_VELOCITY) / 100;
+            total_vel = ((MIN_VELOCITY - BASE_VELOCITY) * (velocity - min_scale)) / (max_scale - min_scale);
             break;
         case 1:
             // convert velocity (0-100 to 90-180)
-            total_vel = ((velocity - MIN_VELOCITY) * 100) / (BASE_VELOCITY - MIN_VELOCITY);
+            total_vel = ((MAX_VELOCITY - BASE_VELOCITY) * (velocity - min_scale)) / (max_scale - min_scale);
             break;
         default:
             break;
