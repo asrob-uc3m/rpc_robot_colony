@@ -3,6 +3,7 @@
 .project
 build/
 CMakeLists.txt.user
+*.autosave
 
 # Compiled Object files
 *.slo
