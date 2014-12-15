@@ -17,23 +17,29 @@ class MotorInterface
 {
     public:
         /**
-         * @brief Constructor.
+         * @brief Parametrized constructor.
          */
-        MotorInterface() {}
+        MotorInterface(int pwm_pin)
+        {
+            _pwm_pin = pwm_pin;
+        }
 
         /**
          * @brief Destructor.
          */
-        virtual ~MotorInterface() {}
+        virtual ~MotorInterface()
+        {
+        }
 
         /**
          * @brief move
-         * @param direction Value 0 or 1.
-         * @param velocity Value between 0 and 100.
-         * @return
+         * @param velocity Value between -100 and 100.
+         * @return 0- success, -1- error.
          */
-        virtual void move(int direction, int velocity) {
-        }
+        virtual int move(int velocity) = 0;
+
+    protected:
+        int _pwm_pin;
 };
 
 #endif

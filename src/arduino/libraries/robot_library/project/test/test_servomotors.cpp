@@ -12,7 +12,7 @@
 
 #include "../servomotor_driver.h"
 
-ServomotorDriver servo(9);
+MotorInterface *servo = new ServomotorDriver(9);
 
 void setup()
 {
@@ -22,21 +22,20 @@ void setup()
 void loop()
 {
     // move servomotor
-    // direction 0, velocity 0 (stop)
-    servo.move(0, 0);
+    // stop
+    servo->move(0);
     delay(2000);
-    // direction 0, velocity 100 (move fast back)
-    servo.move(0, 100);
+
+    // move fast back
+    servo->move(100);
     delay(2000);
-    // direction 1, velocity 0 (stop)
-    servo.move(1, 0);
-    delay(1000);
-    // direction 1, velocity 100 (move fast front)
-    servo.move(1, 100);
+
+    // stop
+    servo->move(0);
     delay(1000);
 
-    // direction 1, velocity 0 (stop)
-    servo.move(1, 0);
+    // move fast front
+    servo->move(-100);
     delay(1000);
 
     delay(1000);

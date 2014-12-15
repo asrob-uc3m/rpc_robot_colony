@@ -14,12 +14,11 @@
 
 //////////////////////////////////////////////////
 
-MotorDriver::MotorDriver(int pwm_pin, int dir_pin) : MotorInterface()
+MotorDriver::MotorDriver(int pwm_pin, int dir_pin) : MotorInterface(pwm_pin)
 {
-    _pwm_pin = pwm_pin;
     _dir_pin = dir_pin;
 
-    pinMode(_pwm_pin, OUTPUT);
+    pinMode(pwm_pin, OUTPUT);
     pinMode(_dir_pin, OUTPUT);
 }
 
@@ -31,20 +30,33 @@ MotorDriver::~MotorDriver()
 
 //////////////////////////////////////////////////
 
-void MotorDriver::move(int direction, int velocity)
+int MotorDriver::move(int velocity)
 {
     int total_vel = 0;
-    int min_scale = 0;
-    int max_scale = 100;
+    int min_scale = 0, max_scale = 100;
+    int direction;
+
+    // check correct limits
+    if (velocity < -100 || velocity > 100) {
+        return -1;
+    }
 
     // convert velocity (0-100 to 0-255)
-    total_vel = ((MAX_VELOCITY - MIN_VELOCITY) * (velocity - min_scale)) / (max_scale - min_scale);
+    total_vel = ((MAX_VELOCITY - MIN_VELOCITY) * (abs(velocity) - min_scale)) / (max_scale - min_scale);
 
     // set direction (0- LOW, 1- HIGH)
+    if (velocity < 0) {
+        direction = LOW;
+    }
+    else if (velocity >= 0) {
+        direction = HIGH;
+    }
     digitalWrite(_dir_pin, direction);
 
     // set velocity
     analogWrite(_pwm_pin, total_vel);
+
+    return 0;
 }
 
 //////////////////////////////////////////////////

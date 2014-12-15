@@ -14,7 +14,7 @@
 
 //////////////////////////////////////////////////
 
-ServomotorDriver::ServomotorDriver(int pwm_pin) : MotorInterface()
+ServomotorDriver::ServomotorDriver(int pwm_pin) : MotorInterface(pwm_pin)
 {
     _servo.attach(pwm_pin);
 }
@@ -28,29 +28,29 @@ ServomotorDriver::~ServomotorDriver()
 
 //////////////////////////////////////////////////
 
-void ServomotorDriver::move(int direction, int velocity)
+int ServomotorDriver::move(int velocity)
 {
     int total_vel = 0;
-    int min_scale = 0;
-    int max_scale = 100;
+    int min_scale = 0, max_scale = 100;
 
-    //TODO: change direction to an enum
-    switch (direction) {
-        case 0:
-            // convert velocity (0-100 to 90-0)
-            total_vel = ((MIN_VELOCITY - BASE_VELOCITY) * (velocity - min_scale)) / (max_scale - min_scale);
-            break;
-        case 1:
-            // convert velocity (0-100 to 90-180)
-            total_vel = ((MAX_VELOCITY - BASE_VELOCITY) * (velocity - min_scale)) / (max_scale - min_scale);
-            break;
-        default:
-            break;
+    // check correct limits
+    if (velocity < -100 || velocity > 100) {
+        return -1;
+    }
+
+    if (velocity < 0) {
+        // convert velocity (0-100 to 90-0)
+        total_vel = ((MIN_VELOCITY - BASE_VELOCITY) * (abs(velocity) - min_scale)) / (max_scale - min_scale);
+    }
+    else if (velocity >= 0) {
+        // convert velocity (0-100 to 90-180)
+        total_vel = ((MAX_VELOCITY - BASE_VELOCITY) * (velocity - min_scale)) / (max_scale - min_scale);
     }
 
     // set servo velocity
-    Serial.println(total_vel);
     _servo.write(total_vel);
+
+    return 0;
 }
 
 //////////////////////////////////////////////////

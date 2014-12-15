@@ -13,7 +13,7 @@
  * @copyright   Asociacion de Robotica, University Carlos III of Madrid
  */
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include "Servo/Servo.h"
 
 #include "motor_interface.h"
@@ -33,11 +33,10 @@ class ServomotorDriver : public MotorInterface
 
         /**
          * @brief move
-         * @param direction Value 0 or 1.
-         * @param velocity Value between 0 and 100.
-         * @return
+         * @param velocity Value between -100 and 100.
+         * @return 0- success, -1- error.
          */
-        void move(int direction, int velocity);
+        int move(int velocity);
 
     private:
         Servo _servo;

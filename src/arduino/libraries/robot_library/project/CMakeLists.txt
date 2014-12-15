@@ -21,7 +21,7 @@ generate_arduino_library(
 generate_arduino_firmware(
     robot_library
     SRCS robot_library.cpp
-    LIBS motor_interface_lib
+    LIBS motor_interface_lib m
     BOARD uno
 )
 

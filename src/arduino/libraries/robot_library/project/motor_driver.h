@@ -13,7 +13,7 @@
  * @copyright   Asociacion de Robotica, University Carlos III of Madrid
  */
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include "motor_interface.h"
 
 class MotorDriver : public MotorInterface
@@ -31,14 +31,12 @@ class MotorDriver : public MotorInterface
 
         /**
          * @brief move
-         * @param direction Value 0 or 1.
-         * @param velocity Value between 0 and 100.
-         * @return
+         * @param velocity Value between -100 and 100.
+         * @return 0- success, -1- error.
          */
-        void move(int direction, int velocity);
+        int move(int velocity);
 
     private:
-        int _pwm_pin;
         int _dir_pin;
 
         static const int MAX_VELOCITY = 255;
