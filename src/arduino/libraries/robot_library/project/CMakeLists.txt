@@ -19,8 +19,8 @@ generate_arduino_library(
 
 generate_arduino_library(
     distance_sensor_interface_lib
-    SRCS hcsr04_wrapper.cpp ${ARD_LIB_DIR}/HCSR04Ultrasonic/Ultrasonic.cpp
-    HDRS hcsr04_wrapper.h distance_sensor_interface.h ${ARD_LIB_DIR}/HCSR04Ultrasonic/Ultrasonic.h
+    SRCS hcsr04_driver.cpp
+    HDRS hcsr04_driver.h distance_sensor_interface.h
     BOARD uno
 )
 

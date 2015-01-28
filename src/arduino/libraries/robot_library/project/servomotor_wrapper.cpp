@@ -10,25 +10,25 @@
  * @copyright   Asociacion de Robotica, University Carlos III of Madrid
  */
 
-#include "servomotor_driver.h"
+#include "servomotor_wrapper.h"
 
 //////////////////////////////////////////////////
 
-ServomotorDriver::ServomotorDriver(int pwm_pin) : MotorInterface(pwm_pin)
+ServomotorWrapper::ServomotorWrapper(int pwm_pin) : MotorInterface(pwm_pin)
 {
     _servo.attach(pwm_pin);
 }
 
 //////////////////////////////////////////////////
 
-ServomotorDriver::~ServomotorDriver()
+ServomotorWrapper::~ServomotorWrapper()
 {
     _servo.detach();
 }
 
 //////////////////////////////////////////////////
 
-int ServomotorDriver::move(int velocity)
+int ServomotorWrapper::move(int velocity)
 {
     int total_vel = 0;
     int min_scale = 0, max_scale = 100;

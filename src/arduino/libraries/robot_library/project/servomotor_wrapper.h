@@ -18,18 +18,18 @@
 
 #include "motor_interface.h"
 
-class ServomotorDriver : public MotorInterface
+class ServomotorWrapper : public MotorInterface
 {
     public:
         /**
          * @brief Constructor.
          */
-        ServomotorDriver(int pwm_pin);
+        ServomotorWrapper(int pwm_pin);
 
         /**
          * @brief Destructor.
          */
-        ~ServomotorDriver();
+        ~ServomotorWrapper();
 
         /**
          * @brief move

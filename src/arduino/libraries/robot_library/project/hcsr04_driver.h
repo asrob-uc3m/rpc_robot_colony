@@ -15,26 +15,19 @@
 
 #include <Arduino.h>
 #include "distance_sensor_interface.h"
-#include "HCSR04Ultrasonic"
 
-class Hcsr04Wrapper : public DistanceSensorInterface
+class Hcsr04Driver : public DistanceSensorInterface
 {
     public:
         /**
          * @brief Parametrized constructor.
          */
-        Hcsr04Wrapper(int echo_pin, int triger_pin)
-        {
-            _echo_pin = echo_pin;
-            _triger_pin = triger_pin;
-        }
+        Hcsr04Driver(int echo_pin, int triger_pin);
 
         /**
          * @brief Destructor.
          */
-        ~Hcsr04Wrapper()
-        {
-        }
+        ~Hcsr04Driver();
 
         /**
          * @brief get_distance
