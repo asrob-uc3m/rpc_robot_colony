@@ -34,21 +34,30 @@ int ServomotorDriver::move(int velocity)
     int min_scale = 0, max_scale = 100;
 
     // check correct limits
-    if (velocity < -100 || velocity > 100) {
+    if (velocity < -max_scale || velocity > max_scale) {
         return -1;
     }
 
     if (velocity < 0) {
         // convert velocity (0-100 to 90-0)
-        total_vel = ((MIN_VELOCITY - BASE_VELOCITY) * (abs(velocity) - min_scale)) / (max_scale - min_scale);
+        total_vel = ((MIN_VELOCITY - BASE_VELOCITY) / (max_scale - min_scale)) * abs(velocity) + BASE_VELOCITY;
+        Serial.println("entra 90-0");
+        Serial.println(((MIN_VELOCITY - BASE_VELOCITY) / (max_scale - min_scale)) * velocity + BASE_VELOCITY);
     }
     else if (velocity >= 0) {
         // convert velocity (0-100 to 90-180)
-        total_vel = ((MAX_VELOCITY - BASE_VELOCITY) * (velocity - min_scale)) / (max_scale - min_scale);
+        total_vel = ((MAX_VELOCITY - BASE_VELOCITY) / (max_scale - min_scale)) * velocity + BASE_VELOCITY;
+        Serial.println("entra 90-180");
+        Serial.println(((MAX_VELOCITY - BASE_VELOCITY) / (max_scale - min_scale)) * velocity + BASE_VELOCITY);
     }
 
     // set servo velocity
     _servo.write(total_vel);
+
+    Serial.print("velocity: ");
+    Serial.print(velocity);
+    Serial.print("\ttotal_vel: ");
+    Serial.println(total_vel);
 
     return 0;
 }

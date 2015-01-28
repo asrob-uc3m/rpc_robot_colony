@@ -33,8 +33,8 @@ class MotorInterface
 
         /**
          * @brief move
-         * @param velocity Value between -100 and 100.
-         * @return 0- success, -1- error.
+         * @param velocity Value between -100 and 100. Value 0 stop.
+         * @return 0 if success and -1 if error.
          */
         virtual int move(int velocity) = 0;
 

@@ -33,17 +33,17 @@ class ServomotorDriver : public MotorInterface
 
         /**
          * @brief move
-         * @param velocity Value between -100 and 100.
-         * @return 0- success, -1- error.
+         * @param velocity Value between -100 and 100. Value 0 stop.
+         * @return 0 if success and -1 if error.
          */
         int move(int velocity);
 
     private:
         Servo _servo;
 
-        static const int MAX_VELOCITY = 180;
-        static const int BASE_VELOCITY = 90;
-        static const int MIN_VELOCITY = 0;
+        static const float MAX_VELOCITY = 180.0;
+        static const float BASE_VELOCITY = 90.0;
+        static const float MIN_VELOCITY = 0.0;
 };
 
 #endif

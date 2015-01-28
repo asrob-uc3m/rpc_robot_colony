@@ -16,12 +16,14 @@ MotorInterface *servo = new ServomotorDriver(9);
 
 void setup()
 {
-
+    Serial.begin(9600);
+    Serial.flush();
 }
 
 void loop()
 {
     // move servomotor
+
     // stop
     servo->move(0);
     delay(2000);
@@ -32,11 +34,9 @@ void loop()
 
     // stop
     servo->move(0);
-    delay(1000);
+    delay(2000);
 
     // move fast front
     servo->move(-100);
-    delay(1000);
-
-    delay(1000);
+    delay(2000);
 }

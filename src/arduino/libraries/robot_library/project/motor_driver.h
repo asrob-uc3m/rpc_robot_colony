@@ -31,16 +31,16 @@ class MotorDriver : public MotorInterface
 
         /**
          * @brief move
-         * @param velocity Value between -100 and 100.
-         * @return 0- success, -1- error.
+         * @param velocity Value between -100 and 100. Value 0 stop.
+         * @return 0 if success and -1 if error.
          */
         int move(int velocity);
 
     private:
         int _dir_pin;
 
-        static const int MAX_VELOCITY = 255;
-        static const int MIN_VELOCITY = 0;
+        static const float MAX_VELOCITY = 255.0;
+        static const float MIN_VELOCITY = 0.0;
 };
 
 #endif

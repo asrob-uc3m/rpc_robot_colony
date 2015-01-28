@@ -16,12 +16,14 @@ MotorInterface *motor = new MotorDriver(4, 5);
 
 void setup()
 {
-
+    Serial.begin(9600);
+    Serial.flush();
 }
 
 void loop()
 {
     // move continuous motor
+
     // stop
     motor->move(0);
     delay(2000);
@@ -32,11 +34,9 @@ void loop()
 
     // stop
     motor->move(0);
-    delay(1000);
+    delay(2000);
 
     // move fast front
     motor->move(-100);
-    delay(1000);
-
-    delay(1000);
+    delay(2000);
 }

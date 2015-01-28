@@ -16,4 +16,5 @@ generate_arduino_firmware(
     SRCS test_servomotors.cpp
     LIBS motor_interface_lib
     BOARD uno
+    SERIAL screen @SERIAL_PORT@ -b 9600
 )
