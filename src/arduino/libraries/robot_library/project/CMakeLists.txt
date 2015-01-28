@@ -12,8 +12,15 @@ set(ARD_LIB_DIR ${ARDUINO_SDK_PATH}/libraries)
 #====================================================================#
 generate_arduino_library(
     motor_interface_lib
-    SRCS servomotor_driver.cpp motor_driver.cpp ${ARD_LIB_DIR}/Servo/Servo.cpp
-    HDRS servomotor_driver.h motor_driver.h motor_interface.h ${ARD_LIB_DIR}/Servo/Servo.h
+    SRCS servomotor_wrapper.cpp motor_driver.cpp ${ARD_LIB_DIR}/Servo/Servo.cpp
+    HDRS servomotor_wrapper.h motor_driver.h motor_interface.h ${ARD_LIB_DIR}/Servo/Servo.h
+    BOARD uno
+)
+
+generate_arduino_library(
+    distance_sensor_interface_lib
+    SRCS hcsr04_wrapper.cpp ${ARD_LIB_DIR}/HCSR04Ultrasonic/Ultrasonic.cpp
+    HDRS hcsr04_wrapper.h distance_sensor_interface.h ${ARD_LIB_DIR}/HCSR04Ultrasonic/Ultrasonic.h
     BOARD uno
 )
 
