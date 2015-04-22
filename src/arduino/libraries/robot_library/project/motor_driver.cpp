@@ -3,7 +3,7 @@
  * @brief       The Motor Driver class
  *
  * @author      Raul Perula-Martinez <raul.perula@uc3m.es>
- * @date        2014-12
+ * @date        2015-01
  *
  * @version     1.0.0
  * @license     GPLv3
@@ -37,7 +37,7 @@ int MotorDriver::move(int velocity)
     int direction;
 
     // check correct limits
-    if (velocity < -100 || velocity > 100) {
+    if (velocity < -max_scale || velocity > max_scale) {
         return -1;
     }
 
@@ -55,6 +55,11 @@ int MotorDriver::move(int velocity)
 
     // set velocity
     analogWrite(_pwm_pin, total_vel);
+
+    Serial.print("velocity: ");
+    Serial.print(velocity);
+    Serial.print("\ttotal_vel: ");
+    Serial.println(total_vel);
 
     return 0;
 }

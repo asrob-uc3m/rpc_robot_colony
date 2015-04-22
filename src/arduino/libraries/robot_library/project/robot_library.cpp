@@ -3,7 +3,7 @@
  * @brief       Main.
  *
  * @author      Raul Perula-Martinez <raul.perula@uc3m.es>
- * @date        2014-11
+ * @date        2015-01
  *
  * @version     1.0.0
  * @license     GPLv3
@@ -18,5 +18,4 @@ void setup()
 
 void loop()
 {
-
 }
